@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+.login-detail{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0
+}
+
+
+.login{
+    width: 400px;
+    max-width: 100%;
+}
+
+.loging h1{
+    padding: 20px 40px;
+}
+
+.details{
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.details input{
+    border: 2px solid black;
+    border-radius: 4px;
+    display: block;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+.details .success input{
+    border-color: green;
+}
+
+.details .error input{
+    border-color: red;
+}
+
+.details i{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    visibility: hidden;
+}
+
+.details .success i .fa-circle-check{
+    color: green;
+    visibility: visible;
+}
+
+.details small{
+    visibility: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.details .error i .fa-triangle-exclamation{
+    color: red;
+    visibility: visible;
+}
+
+.details .error small{
+    color: red;
+    visibility: visible;
+}
+
+
+.login button{
+    background-color: #565656;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+}

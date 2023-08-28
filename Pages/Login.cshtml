@@ -1,0 +1,22 @@
+﻿@page
+@model WebAppli.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Pages/Shared/_UserLayout.cshtml";
+}
+
+<section class="login-detail">
+    <form method="post" asp-page="Login">
+        <div class="login">
+            <img src="~/user/img/logo.png" alt="logo">
+            <h2>Login</h2>
+            @Model.Msg
+            <input class="form-field" type="text" placeholder="Username" name="username">
+            <input class="form-field" type="password" placeholder="Password" name="Password">
+            <a class="forget" href="#">Forgot Password?</a>
+            <div class="g-recaptcha" data-sitekey="6Ld6frkjAAAAABcqrffzcOaOdNl29mLq39Fxdhiy"></div>
+            <button type="submit" class="btn">submit</button>
+            <a class="create" asp-page="register">Create Account</a>
+        </div>
+    </form>
+</section>

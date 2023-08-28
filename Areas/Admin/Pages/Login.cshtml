@@ -1,0 +1,23 @@
+﻿@page
+@model WebAppli.Areas.Admin.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Areas/Admin/Pages/Shared/_Layout.cshtml";
+}
+
+<section class="login-detail">
+    
+    <form method="post" asp-page="Login">
+        <div class="login">
+            <h2>Login</h2>
+            @Model.Msg
+            <input class="form-field" type="text" placeholder="UserName" name="Username">
+            <input class="form-field" type="password" placeholder="Password" name="Password">
+            <a class="forget" href="#">Forgot Password?</a>
+            <div class="g-recaptcha" data-sitekey="6Ld6frkjAAAAABcqrffzcOaOdNl29mLq39Fxdhiy"></div>
+            <button>submit</button>
+            <a class="create" href="../html/create-account.html">Create Account</a>
+        </div>
+    </form>
+</section>
+

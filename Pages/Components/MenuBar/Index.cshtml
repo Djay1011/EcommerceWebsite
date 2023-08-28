@@ -1,0 +1,21 @@
+﻿<ul class="navss" id="navs">
+    @if (ViewBag.usernameSession == null)
+    {
+        <div class="icon">
+            <a asp-page="Login"><i class="fa-solid fa-user" id="user"></i></a>
+        </div>
+        
+    }
+    else
+    {
+        <li><a class="active" asp-page="index">Welcome @ViewBag.usernameSession </a></li>
+        <li><a asp-page="InvoiceMangement">Invoice</a></li>
+        <li><a asp-page="profile">profile</a></li>
+        <li><a asp-page="Login" asp-page-handler="Logout">Logout</a></li>
+        <a href="" id="cancel"><i class="fa-solid fa-xmark"></i></a>
+        <div class="mode">
+            <input type="checkbox" class="mode-btn" id="checkbox">
+            <label id="light" for="checkbox"></label>
+        </div>
+    }   
+</ul>

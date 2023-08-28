@@ -1,0 +1,63 @@
+﻿@page
+@model WebAppli.Areas.Admin.Pages.ProductsModel
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Areas/Admin/Pages/Shared/_AdminLayout.cshtml";
+}
+@using WebAppli.Models;
+
+
+<div class="row ">
+    <div class="col-12">
+        <div class="card" style="min-height: 485px">
+            <div class="card-header card-header-text">
+                <h4 class="card-title">Products</h4>
+                <p class="category"> Time: @DateTime.Now</p>
+            </div>
+            
+            <div class="card-content table-responsive">
+                @TempData["msg"]
+                <table class="table table-hover">
+                    <thead class="text-primary">
+                        <tr>
+                            <th>ID</th>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Featured</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model.Products)
+                        {
+                            <tr>
+                                <td>@product.Id</td>
+                                <td><img src="~/Product/@product.photo" width="90" /></td>
+                                <td>@product.Name</td>
+                                <td>£@product.Price</td>
+                                <td>@(product.Featured ? "Featured" : "")</td>
+                                <td>@(product.Status ? "Show" : "Hide")</td>
+                                <td>
+                                    <a asp-page="editproduct" asp-route-id="@product.Id" class="text-info">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+
+                                    <a asp-page="products" asp-page-handler="Delete" asp-route-id="@product.Id" class="text-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+
+
+                                </td>
+                            </tr>
+                        }
+                       
+                    </tbody>
+                  
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

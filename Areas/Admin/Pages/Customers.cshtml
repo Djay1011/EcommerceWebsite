@@ -1,0 +1,60 @@
+﻿@page
+@model WebAppli.Areas.Admin.Pages.CustomersModel
+@{
+    ViewData["Title"] = "Customers";
+    Layout = "~/Areas/Admin/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row ">
+    <div class="col-12">
+        <div class="card" style="min-height: 485px">
+            <div class="card-header card-header-text">
+                <h4 class="card-title">Customers</h4>
+                <p class="category">Time: @DateTime.Now</p>
+            </div>
+            <div class="card-content table-responsive">
+                @TempData["msg"]
+                <table class="table table-hover">
+                    <thead class="text-primary">
+                        <tr>
+                            <th>ID</th>
+                            <th>UserName</th>
+                            <th>FullName</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var customer in Model.customers)
+                        {
+                            <tr>
+                                <td>@customer.Id</td>
+                                <td>@customer.UserName</td>
+                                <td>@customer.FullName</td>
+                                <td>@customer.Email</td>
+                                <td>@customer.Address</td>
+                                <td>@customer.Phone</td>
+                                <td>@(customer.Status ? "Show" : "Hide")</td>
+                                <td>
+                                    <a asp-page="invoices" asp-route-id="@customer.Id" class="text-info">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>&nbsp;
+
+                                    <a asp-page="customers" asp-page-handler="Delete" asp-route-id="@customer.Id" class="text-danger">
+                                        <i class="fa-solid fa-trash"></i>&nbsp;
+                                    </a>
+                                </td>
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

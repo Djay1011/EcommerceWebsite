@@ -1,0 +1,10 @@
+﻿@page
+@model WebAppli.Pages.WelcomeModel
+@{
+    ViewData["Title"] = "Welcome";
+    Layout = "~/Pages/Shared/_UserLayout.cshtml";
+}
+
+@using Microsoft.AspNetCore.Http;
+
+<h1>Welcome @Model.Username</h1>

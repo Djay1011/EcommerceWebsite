@@ -1,0 +1,188 @@
+﻿@page
+@model WebAppli.Areas.Admin.Pages.DashboardModel
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Areas/Admin/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<div class="main-content">
+
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header">
+                    <div class="icon icon-warning">
+                        <span class="material-icons">
+                            Prodduct
+                        </span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="category"><strong></strong></p>
+                    <h3 class="card-title">50</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="fa-solid fa-box-archive"></i><span>Products</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header">
+                    <div class="icon icon-rose">
+                        <span class="material-icons">
+                            Customer
+                        </span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="category"><strong></strong></p>
+                    <h3 class="card-title">20</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="fa-solid fa-chart-simple"></i><span>Customer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header">
+                    <div class="icon icon-success">
+                        <span class="material-icons">
+                            Invoice
+                        </span>
+
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="category"><strong></strong></p>
+                    <h3 class="card-title">23</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                        <span>Invoice</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header">
+                    <div class="icon icon-info">
+
+                        <span class="material-icons">
+                            Category
+                        </span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="category"><strong></strong></p>
+                    <h3 class="card-title">+245</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="fa-solid fa-shapes"></i><span>Category</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row ">
+        <div class="col-12">
+            <div class="card" style="min-height: 485px">
+                <div class="card-header card-header-text">
+                    <h4 class="card-title">Products</h4>
+                    <p class="category"> Time: @DateTime.Now</p>
+                </div>
+
+                <div class="card-content table-responsive">
+                    @TempData["msg"]
+                    <table class="table table-hover">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Featured</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var product in Model.Products)
+                            {
+                                <tr>
+                                    <td>@product.Id</td>
+                                    <td><img src="~/Product/@product.photo" width="90" /></td>
+                                    <td>@product.Name</td>
+                                    <td>£@product.Price</td>
+                                    <td>@(product.Featured ? "Featured" : "")</td>
+                                    <td>@(product.Status ? "Show" : "Hide")</td>
+                                    <td>
+                                        <a asp-page="editproduct" asp-route-id="@product.Id" class="text-info">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+
+                                        <a asp-page="products" asp-page-handler="Delete" asp-route-id="@product.Id" class="text-danger">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+
+
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <nav class="d-flex">
+                        <ul class="m-0 p-0">
+                            <li>
+                                <a href="#">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Company
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Portfolio
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Blog
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>

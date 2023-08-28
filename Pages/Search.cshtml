@@ -1,0 +1,36 @@
+﻿@page
+@model WebAppli.Pages.SearchModel
+@using WebAppli.Models;
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Pages/Shared/_UserLayout.cshtml";
+}
+
+
+<section class="collection">
+    @if (Model.product != null && Model.product.Count > 0)
+    {
+        <div class="header">
+            <h2></h2>
+            <p><p>
+        </div>
+
+        
+         @foreach (var product in Model.product)
+         {
+            <div class="all-product" onclick="window.location.href='Details 2.html';">
+                <div class="product">
+                    <a asp-page="ProductDetails" asp-route-id="@product.Id"><img src="~/Product/@product.photo" /></a>
+                    <div class="descript">
+                        <span>@product.Title</span>
+                        <h5>@product.Name</h5>
+                        <p>&#163;@product.Price</p>
+                    </div>
+                </div>
+            </div>
+         }
+        
+    }
+   
+    
+</section>

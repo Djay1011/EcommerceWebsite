@@ -1,0 +1,72 @@
+﻿@page
+@model WebAppli.Pages.ShoppingCartModel;
+
+@using WebAppli.Models;
+@{
+    ViewData["Title"] = "ShoppingCart";
+    Layout = "~/Pages/Shared/_UserLayout.cshtml";
+}
+
+<section class="cart">
+    <h1>Your Cart</h1>
+    <a asp-page="Index"><button class="add-to-cart">Continue Shopping</button></a>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Quantity <button type="submit"><i class="fa-solid fa-floppy-disk"></i></button></td>
+                    <td>Total</td>
+                    <td>Remove</td>
+                </tr>
+            </thead>
+            <tbody class="box">
+                @if (Model.MyCart != null)
+                {
+                    @foreach (var item in Model.MyCart)
+                    {
+          
+                        <tr>
+                            <td><img width="60" src="~/Product/@item.product.Photo" alt=""></td>
+                            <td>@item.product.Name</td>
+                        <td><input name="quantity" placeholder="1" type="number" min="1" value="@item.Quantity" class="quantitys"></td>
+                            <td class="totals">£@(item.product.Price * item.Quantity)</td>
+                            <td><a asp-page="ShoppingCart" asp-page-handler="remove" asp-route-id="@item.product.Id"><i class="fa-regular fa-trash-can remove"></i></a></td>
+                        </tr>
+
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td>Your Cart Is Empty</td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+
+        <div class="cart-total">
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                <td class="subtotals"><strong>@Model.SubTotal.ToString("c")</strong></td>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                <td class="subtotals"><strong>@Model.tax.ToString("c")</strong></td>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                <td class="subtotals"><strong>@Model.Total.ToString("c")</strong></td>
+                </tr>
+            </table>
+            <a asp-page="shoppingCart" asp-page-handler="Checkout"><button>Check Out</button></a>
+        </div>
+
+</section>
+
+
+
+

@@ -1,0 +1,26 @@
+﻿@page
+@model WebAppli.Pages.RegisterModel
+
+@using WebAppli.Models;
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Pages/Shared/_UserLayout.cshtml";
+}
+
+
+<section class="login-detail">
+    <form method="post" asp-page="Register">
+        <div class="login">
+            <img src="~/user/img/logo.png" alt="logo">
+            <h2>Create Account</h2>
+            <input class="form-field" type="text" placeholder="Username" asp-for="@Model.account.UserName">
+            <input type="text" placeholder="FullName" asp-for="@Model.account.FullName">
+            <input class="form-field" type="email" placeholder="Email" asp-for="@Model.account.Email">
+            <input class="form-field" type="text" placeholder="Address" asp-for="@Model.account.Address">
+            <input type="text" placeholder="PhoneNumber" asp-for="@Model.account.Phone">
+            <input class="form-field" type="password" placeholder="Password" asp-for="@Model.account.Password">
+            
+            <button type="submit" class="btn">Create</button>
+        </div>
+    </form>
+</section>

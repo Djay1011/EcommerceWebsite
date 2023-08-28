@@ -1,0 +1,252 @@
+﻿@using System.Security.Claims;
+@{
+    var user = User.FindFirst(ClaimTypes.Name);
+    string username = "";
+    if (user != null)
+    {
+        username = User.FindFirst(ClaimTypes.Name).Value;
+    }
+}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>
+        Dashboard
+    </title>
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="~/admin/css/bootstrap.min.css">
+    <!----~css3---->
+    <link rel="stylesheet" href="~/admin/css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x css SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.comcss2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.comcss2?family=Material+Icons"
+          rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/c2b94a6db9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+
+
+    <div class="wrapper">
+
+
+        <div class="body-overlay"></div>
+
+
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a asp-page="Dashboard"><h3><img src="~/user/img/logo.png" class="img-fluid" /><span>ADMIN LAYOUT</span></h3></a>
+            </div>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a asp-page="Dashboard" class="dashboard"><i class="fa-solid fa-gauge"></i><span>Dashboard</span></a>
+                </li>
+
+                <div class="small-screen navbar-display">
+                <li class="dropdown d-lg-none d-md-block d-xl-none d-sm-block">
+                    <a href="#homeSubmenu0" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fa-solid fa-bell"></i><span> 4 notification</span>
+                    </a>
+                    <ul class="collapse list-unstyled menu" id="homeSubmenu0">
+                        <li>
+                            <a href="#">You have 5 new messages</a>
+                        </li>
+                        <li>
+                            <a href="#">You're now friend with Mike</a>
+                        </li>
+                        <li>
+                            <a href="#">Wish Mary on her birthday!</a>
+                        </li>
+                        <li>
+                            <a href="#">5 warnings in Server Console</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="d-lg-none d-md-block d-xl-none d-sm-block">
+                    <a href="#"><i class="fa-solid fa-grid"></i><span>apps</span></a>
+                </li>
+
+                <li class="d-lg-none d-md-block d-xl-none d-sm-block">
+                    <a href="#"><i class="fa-solid fa-user"></i><span>user</span></a>
+                </li>
+
+                <li class="d-lg-none d-md-block d-xl-none d-sm-block">
+                    <a href="#"><i class="fa-solid fa-gear"></i><span>setting</span></a>
+                </li>
+    </div>
+
+
+    <li class="dropdown">
+        <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fa-solid fa-shapes"></i><span>Category</span>
+        </a>
+        <ul class="collapse list-unstyled menu" id="homeSubmenu1">
+            <li>
+                <a asp-page="Categories">Category</a>
+            </li>
+            <li>
+                <a asp-page="AddCategory">Add Category</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="dropdown">
+        <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fa-solid fa-box-archive"></i><span>Products</span>
+        </a>
+        <ul class="collapse list-unstyled menu" id="pageSubmenu2">
+            <li>
+                <a asp-page="products">ProductsList</a>
+            </li>
+            <li>
+                <a asp-page="AddProduct">Add Product</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="dropdown">
+        <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fa-solid fa-chart-simple"></i><span>Customer</span>
+        </a>
+        <ul class="collapse list-unstyled menu" id="pageSubmenu3">
+            <li>
+                <a asp-page="Customers">Customer List</a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fa-solid fa-puzzle-piece"></i>
+            <span>Invoice</span>
+        </a>
+        <ul class="collapse list-unstyled menu" id="pageSubmenu4">
+            <li>
+                <a asp-page="invoice"> Invoice List</a>
+            </li>
+        </ul>
+    </li>
+
+    
+
+    <li class="">
+        <a asp-page="login" asp-page-handler="logout"><i class="fa-solid fa-right-from-bracket"></i><span>LogOut</span></a>
+    </li>
+
+
+    </ul>
+
+
+    </nav>
+
+
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <div class="top-navbar">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="d-xl-block d-lg-block d-md-mone d-none">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+
+                    <a class="navbar-brand" href="#"> Dashboard </a>
+
+                    <button class="d-inline-block d-lg-none ml-auto more-button" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="material-icons">more_vert</span>
+                    </button>
+
+                    <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fa-solid fa-grid"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="Profile" asp-area="admin">
+                                    <i class="fa-solid fa-user"></i> @username
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fa-solid fa-gear"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
+            @RenderBody()
+
+
+
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap js -->
+    <script src="~/admin/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="~/admin/js/popper.min.js"></script>
+    <script src="~/admin/js/bootstrap.min.js"></script>
+    <script src="~/admin/js/jquery-3.3.1.min.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $('#content').toggleClass('active');
+            });
+
+            $('.more-button,.body-overlay').on('click', function () {
+                $('#sidebar,.body-overlay').toggleClass('show-nav');
+            });
+
+        });
+
+
+
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
+
+

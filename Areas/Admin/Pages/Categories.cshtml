@@ -1,0 +1,53 @@
+﻿ @page
+@model WebAppli.Areas.Admin.Pages.CategoriesModel
+@{
+    ViewData["Title"] = "Categories";
+    Layout = "~/Areas/Admin/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row ">
+    <div class="col-12">
+        <div class="card" style="min-height: 485px">
+            <div class="card-header card-header-text">
+                <h4 class="card-title">Categories</h4>
+                <p class="category">Time: @DateTime.Now</p>
+            </div>
+            <div class="card-content table-responsive">
+                @TempData["msg"]
+                <table class="table table-hover">
+                    <thead class="text-primary">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var Category in Model.Categories)
+                        {
+                            <tr>
+                                <td>@Category.Id</td>
+                                <td>@Category.Name</td>
+                                <td>@(Category.Status ? "Show" : "Hide")</td>
+                                <td>
+                                   
+                                    <a asp-page="editcategory" asp-route-id="@Category.Id" class="text-info">
+                                        <i class="fa-solid fa-pen-to-square"></i>&nbsp;
+                                    </a>
+
+                                    <a asp-page="CategoriesModel" asp-page-handler="Delete" asp-route-id="@Category.Id" class="text-danger">
+                                        <i class="fa-solid fa-trash"></i>&nbsp;
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

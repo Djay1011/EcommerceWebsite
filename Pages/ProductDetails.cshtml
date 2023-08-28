@@ -1,0 +1,61 @@
+﻿@page
+@model WebAppli.Pages.ProductDetailsModel
+
+@using WebAppli.Models;
+@{
+    ViewData["Title"] = "ProductDetails";
+    Layout = "~/Pages/Shared/_UserLayout.cshtml";
+}
+
+<section class="product-info">
+    <div class="main-image">
+        <div class="top-img">
+            <!------(Big Image)------>
+            <img src="~/Product/@Model.MainImage" width="100%" id="Firstimg" alt="">
+        </div>
+        <div class="related-image">
+            @foreach (var relatedImage in Model.RelatedImages)
+            {
+                <div class="all-related-img">
+                    <img src="~/Product/@relatedImage" width="100%" class="related-img" alt="">
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="product-details">
+        <span style="color: #565656;">@Model.Brand</span>
+        <h4 class="product-title">@Model.Name</h4>
+        <p class="product-price">&#163;@Model.Price.ToString("0.00")</p>
+        <div class="quantity">
+            <h6>Quantity</h6>
+            <input type="number" value="1">
+        </div>
+        <a class="add-to-cart" asp-page="ShoppingCart" asp-page-handler="buynow" asp-route-id="@Model.Id"><button class="add-to-cart">Add To Cart</button></a>
+        <div class="info">
+            <h4>Product Details</h4>
+            <span>@Model.Description</span>
+        </div>
+    </div>
+</section>
+
+<section class="collection">
+    <div class="header">
+        <h2>You May Also Like</h2>
+    </div>
+    <div class="all-product" onclick="window.location.href='.html';">
+        @foreach (var suggestedProduct in Model.SuggestedProducts)
+        {
+            <div class="product">
+                <a asp-page="ProductDetails" asp-route-id="@suggestedProduct.Id"><img src="~/Product/@suggestedProduct.photo" alt="@suggestedProduct.Name"></a>
+                <div class="descript">
+                    <span>@suggestedProduct.Category.Name</span>
+                    <h5>@suggestedProduct.Name</h5>
+                    <p>&#163;@suggestedProduct.Price</p>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+

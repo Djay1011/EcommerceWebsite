@@ -1,0 +1,38 @@
+﻿@page
+@model WebAppli.Pages.InvoiceMangementModel
+@{
+    ViewData["Title"] = "InvoiceManagement";
+    Layout = "~/Pages/Shared/_UserLayout.cshtml";
+}
+
+
+<section class="cart">
+    <h1>INVOICE</h1><h3>[<small>@Model.invoices.Count Invoice(s)</small>]</h3>
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Created</td>
+                <td>Status</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody class="box">
+            @foreach (var invoice in Model.invoices)
+            {
+                <tr>
+                    <td>@invoice.Id</td>
+                    <td>@invoice.Name</td>
+                    <td>@invoice.Created.ToString("dd/MM/yyyy")</td>
+                    <td>@(invoice.Status == 1 ? "Pending" : "Done")</td>
+                    <td>
+                        <a asp-page="InvoiceDetail" asp-route-id="@invoice.Id">Details</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</section>

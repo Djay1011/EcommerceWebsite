@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME - Logokicks</title>
+    <link rel="icon" href="~/user/img/logo.png">
+    <link rel="stylesheet" href="~/user/css/style.css">
+  
+    
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c2b94a6db9.js" crossorigin="anonymous"></script>
+
+    
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="top-header navbar">
+            <a asp-page="Index"><img src="~/user/img/logo.png" alt="logo"></a>
+        </div>
+
+        <div class="navbar">
+            <i class="fa-solid fa-bars" id="sidebtn"></i>
+            <div class="icon">
+                @await Component.InvokeAsync("Cart")
+                <a><i class="fa-solid fa-magnifying-glass Searchbtn"></i></a>
+                <a><i class="fa-solid fa-xmark Closebtn"></i></a>
+                <div class="searchbox">
+                    @await Component.InvokeAsync("SearchBar")
+                </div>
+            </div>
+            @await Component.InvokeAsync("MenuBar")
+
+            @await Component.InvokeAsync("Nav")
+
+            
+        </div>
+    </nav>
+
+    
+
+    <div>
+        @RenderBody()
+    </div>
+
+
+    <footer class="main-footer">
+        <div class="footer">
+            <img src="~/user/img/logo.png" alt="">
+            <h4>About Us</h4>
+            <p><strong>Company reg. Number: </strong> 156347896</p>
+            <p><strong>Company Name: </strong> 101Kicks LTD</p>
+
+            <div class="social-links">
+                <h4>Socials</h4>
+                <div class="icons">
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-snapchat"></i>
+                    <i class="fa-brands fa-tiktok"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <h4>Enquiries</h4>
+            <a href="#">My Account</a>
+            <a href="#">Shipping Policies</a>
+            <a href="#">Return/Refund policy</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms and Conditions</a>
+        </div>
+
+        <div class="footer-info">
+            <h4>Information</h4>
+            <a class="active" href="#">Blog</a>
+            <a href="#">Reviews</a>
+            <a href="#">careers</a>
+            <a href="#">My Order</a>
+        </div>
+
+        <div class="email">
+            <h4>Subscribe to our VIP Newsletter</h4>
+            <div class="form">
+                <input type="email" placeholder="Email" id="newsletter">
+                <input type="submit" value="sign up" id="signup-btn">
+            </div>
+        </div>
+
+
+        <div class="claims">
+            <hr>
+            <img src="~/user/img/payment.png" alt="">
+            <p>&copy;2022, Emmanuel Chinakwe (N1145251). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="~/user/js/navbar.js"></script>
+    <script src="~/user/js/background.js"></script>
+    <script src="~/user/js/font-size.js"></script>
+    <script src="~/user/js/enlarge-img.js"></script>
+    <script src="~/user/js/cart.js"></script>
+    <script src="~/user/js/searchbar.js"></script>
+
+</body>
+</html>

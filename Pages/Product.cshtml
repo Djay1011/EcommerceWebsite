@@ -1,0 +1,36 @@
+﻿@page
+@model WebAppli.Pages.ProductModel
+
+@using WebAppli.Models;
+
+@{
+    ViewData["Title"] = "Product";
+    Layout = "~/Pages/Shared/_UserLayout.cshtml";
+}
+
+
+
+<section class="pro-video">
+    <iframe width="100%" height="450px" src="https://www.youtube.com/embed/qqd2xxHJGhU?start=42&controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=qqd2xxHJGhU&mute=1" title="YouTube video player" frameborder="0" allow="autoplay;picture-in-picture;fullscreen"></iframe>
+</section>
+
+
+<section class="collection">
+    <div class="header">
+        <h2>ALL PRODUCT</h2>
+        <p>T<p>
+    </div>
+    <div class="all-product" onclick="window.location.href='Details 2.html';">
+        @foreach (var product in Model.Products)
+        {
+            <div class="product">
+                <a asp-page="ProductDetails" asp-route-id="@product.Id"><img src="~/Product/@product.photo" /></a>
+                <div class="descript">
+                    <span>@product.Title</span>
+                    <h5>@product.Name</h5>
+                    <p>&#163;@product.Price</p>
+                </div>
+            </div>
+        }
+    </div>
+</section>
